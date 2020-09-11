@@ -14,7 +14,8 @@ J = 0;
 %               You should set J to the cost.
 
 predictions = X * theta;
-J = 1 / (2 * m) * (((predictions - y).^2)' * ones(m, 1));
+%J = 1 / (2 * m) * (((predictions - y).^2)' * ones(m, 1));
+J = 1 / (2 * m) * (predictions - y)' * (predictions - y);
 
 % =========================================================================
 
