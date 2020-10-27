@@ -70,7 +70,13 @@ for i = 1:m
     Y(i, y(i,1)) = 1;
 end
 
-J = ((-Y .* log (H3) - (1-Y) .* log(1 - H3)) * ones(size(Y,2), 1))' * ones(m, 1) / m;
+Theta1T = Theta1.^2;
+Theta2T = Theta2.^2;
+% exclude theta 0
+Theta1TN = Theta1T (:, 2:size(Theta1T, 2) );
+Theta2TN = Theta2T (:, 2:size(Theta2T, 2) );
+
+J = ((-Y .* log (H3) - (1-Y) .* log(1 - H3)) * ones(size(Y,2), 1))' * ones(m, 1) / m + lambda / (2 * m) * (sum(sum( Theta1TN )) + sum(sum( Theta2TN ))) ;
 
 
 
