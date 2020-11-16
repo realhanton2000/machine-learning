@@ -61,7 +61,7 @@ for i = 1:m
     [J_train_i, grad_train_i] = linearRegCostFunction(X_i, y_i, theta_i, 0);
     error_train(i) = J_train_i;
 
-    [J_val_i, gradi] = linearRegCostFunction(Xval, yval, theta_i, 0);
+    [J_val_i, grad_val_i] = linearRegCostFunction(Xval, yval, theta_i, 0);
     error_val(i) = J_val_i;
 end
 
