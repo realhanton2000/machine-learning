@@ -45,6 +45,9 @@ for i = 1: length(lambda_vec)
 
     theta_i = trainLinearReg(X, y, lambda);
 
+% lambda is used only in training.
+% Not for measuring the cost after training is completed.
+
     [J_train_i, grad_train_i] = linearRegCostFunction(X, y, theta_i, 0);
     error_train(i) = J_train_i;
 
