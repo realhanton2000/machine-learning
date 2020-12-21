@@ -21,11 +21,44 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
+for i = 1 : size(idx, 1)
+  x_this = X(i,:);
+  distance = -1;
+  for j = 1 : K
+    centroid_this = centroids(j,:);
+    distance_this = (x_this - centroid_this) * (x_this - centroid_this)';
+    if (idx(i) == 0)
+      idx(i) = j;
+      distance = distance_this;
+    end
+    if (distance > distance_this)
+      idx(i) = j;
+      distance = distance_this;
+    end
+  end
+end
 
+%for j = 1 : 2
+  %x = repmat(X(j,:) , size(centroids, 1), 1)
+  %x - centroids
+  %(x - centroids) * (x - centroids)'
+  %[v, p] = min((x - centroids) * (x - centroids)', [], 2)
 
-
-
-
+  %distance = -1;
+  %for i = 1 : K
+  %  centroid = centroids(i,:);
+  %  distance_this = (x - centroid) * (x - centroid)';
+  %  if (distance == -1)
+  %    distance = distance_this;
+  %    idx(j) = i;
+  %  end
+  %  if (distance > distance_this)
+  %    distance = distance_this;
+  %    idx(j) = i;
+  %  end
+  %end
+  %idx(2)
+%end
 
 % =============================================================
 
